@@ -1,0 +1,13 @@
+function res = recursive_max(nums)
+    if (length(nums) > 0)
+        first_n=nums(end);
+        max=recursive_max(nums(1:end-1));
+        if (first_n > max)
+            res = first_n;
+        else
+            res=max;
+        end
+    else
+        res=-inf;
+    end
+end

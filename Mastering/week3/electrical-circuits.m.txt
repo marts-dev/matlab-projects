@@ -1,0 +1,11 @@
+function junction = voltage(V, R)
+    resistance=[R(2)*R(7)+R(2)*R(1)+R(1)*R(7), -R(1)*R(2), 0;
+        -R(3)*R(8)*R(4), R(7)*R(8)*R(4)+R(3)*R(8)*R(4)+R(3)*R(7)*R(8)+R(3)*R(7)*R(4), -R(3)*R(7)*R(4);
+        0,-R(5)*R(6), R(5)*R(6)+R(5)*R(8)+R(6)*R(8)];
+    volts=V*[R(7)*R(2); R(8)*R(4)*R(7); R(8)*R(6)];
+    junction = resistance\volts;
+end
+
+R = [1,2,4,5,13,4,8,1];
+V = 10;
+voltage(V,R)

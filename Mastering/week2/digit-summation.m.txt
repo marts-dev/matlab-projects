@@ -1,0 +1,8 @@
+function digit=digit_sum(num)
+    if (num<10)
+        digit=num;
+        return
+    end
+    n=rem(num,10);
+    digit=n+digit_sum(fix(num/10));
+end

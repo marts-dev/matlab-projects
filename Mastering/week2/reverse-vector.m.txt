@@ -1,0 +1,8 @@
+function rev=reversal(v)
+    if (length(v)>0)
+        rev=v(end);
+        rev=[rev,reversal(v(1:end-1))];
+    else
+        rev=[];
+    end
+end

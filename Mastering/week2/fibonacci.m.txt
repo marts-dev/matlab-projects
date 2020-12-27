@@ -1,0 +1,15 @@
+function fib=fibor(n)
+    if (n>2)
+        v=fibor(n-1);
+        fib=[v, v(end-1)+v(end)];
+        return
+    end
+    if (n==1)
+        fib=[1];
+        return
+    end
+    if (n==2)
+        fib=[1, 1];
+        return
+    end
+end

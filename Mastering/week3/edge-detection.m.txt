@@ -1,0 +1,22 @@
+function edg = edgy(x)
+    max_col = width(x)-1;
+    max_row = height(x)-1;
+    sx=[-1 0 1;-2 0 2;-1 0 1];
+    sy=[1 2 1;0 0 0;-1 -2 -1];
+    tmp_edg=zeros(max_row+1,max_col+1);
+    for i=2:max_row
+        for j=2:max_col
+            A=double(x(i-1:i+1,j-1:j+1));
+            M=sum(sx.*A, "all")^2+sum(sy.*A,"all")^2;
+            tmp_edg(i,j)=sqrt(M);
+        end
+    end
+    edg=uint8(tmp_edg(2:max_row,2:max_col));
+end
+
+cc = imread('CocaCola.png');
+figure
+imshow(cc);
+edg = edgy(cc);
+figure
+imshow(edg);

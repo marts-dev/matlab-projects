@@ -1,0 +1,10 @@
+function p=palindrome(word)
+    len=length(word);
+    if (len<=1)
+        p=true;
+        return
+    else
+        comparison=word(1)==word(end);
+        p=comparison&&palindrome(word(2:end-1));
+    end
+end

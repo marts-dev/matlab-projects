@@ -1,0 +1,27 @@
+function database=voters(db, varargin)
+    database=db;
+    if rem(length(varargin),2)~=0
+        return
+    end
+    if length(db)==0
+        db=struct([]);
+    end
+    for i=1:floor(length(varargin)/2)
+        if (~isstring(varargin{2*i-1}) && ~ischar(varargin{2*i-1}))
+            return
+        end
+        if (~isscalar(varargin{2*i}))
+            return
+        elseif (~(isreal(varargin{2*i}) && rem(varargin{2*i},1)==0))
+            return
+        end
+        temp_struct=struct('Name', string(varargin{2*i-1}), 'ID', double(varargin{2*i}));
+        db=[db, temp_struct];
+    end
+    database=db;
+end
+
+database = voters([], 'Adam', 11111)
+database = voters(database, 'Eve', 22222)
+database(1)
+database(2)
